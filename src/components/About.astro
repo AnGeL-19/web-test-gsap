@@ -1,0 +1,23 @@
+---
+import Carrousel from "./Carrousel.astro";
+
+
+---
+
+<section id="nosotros" data-index="3" class="w-full max-w-screen-container mx-auto pt-16">
+    <div class="w-full flex gap-[10px]">
+        <div class="w-1/2 h-full">
+            <div class="px-5 py-11">
+                <h2 class="text-5xl font-bold text-dark-text">SOBRE NOSOTROS</h2>
+            </div>
+            <div class="bg-dark-bold p-5 rounded-2xl">
+                <p class="text-green-light-2 font-medium text-base mb-3">En [Nombre de la Clínica], nos dedicamos a brindar atención dental de alta calidad, combinando experiencia y un enfoque humano para que cada paciente se sienta cómodo y bien atendido. Con un equipo de especialistas en diversas áreas de la odontología, estamos preparados para cubrir todas tus necesidades de salud bucal, desde cuidados preventivos hasta procedimientos avanzados.</p>
+                <p class="text-green-light-2 font-medium text-base mb-3">Nos caracterizamos por utilizar la tecnología más avanzada, lo que nos permite ofrecer diagnósticos precisos y tratamientos efectivos. Además, creemos firmemente en la educación de nuestros pacientes, asegurándonos de que comprendas cada paso del proceso para que tomes decisiones informadas sobre tu salud.</p>
+                <p class="text-green-light-2 font-medium text-base">Nuestra clínica está diseñada pensando en tu comodidad, con espacios modernos y acogedores. Creemos que una sonrisa saludable no solo refleja bienestar físico, sino también confianza y felicidad. Por eso, nos esforzamos en ofrecer una experiencia dental que supere tus expectativas.</p>
+            </div>
+        </div>
+        <div class="w-1/2 h-full">
+            <Carrousel  />
+        </div>
+    </div>
+</section>

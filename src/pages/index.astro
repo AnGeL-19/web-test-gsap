@@ -1,219 +1,34 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
+import Header from '../components/Header.astro';
+import Banner from '../components/Banner.astro';
+import Services from '../components/Services.astro';
+import About from '../components/About.astro';
+import Contact from '../components/Contact.astro';
+import DoDate from '../components/DoDate.astro';
+import Footer from '../components/Footer.astro';
 ---
 
-<Layout title="Welcome to Astro.">
-	<div class="w-full mx-auto relative">
-		<header class="h-16 w-full flex items-center sticky top-0 z-50 bg-white">
-			<div class="w-full max-w-screen-container mx-auto flex justify-between">
-				<div class="w-10 h-10">
-					<img class="w-full h-full" src="/assets/icons/logo.png" alt="Dentist Example">
-				</div>
-				<nav class="flex gap-5">
-					<a href="#inicio" class="px-4 py-2 rounded-3xl bg-green-light">
-						<span>Inicio</span>
-					</a>
-					<a href="#servicios" class="px-4 py-2 rounded-3xl">
-						<span>Seccion</span>
-					</a>
-					<a href="#nosotros" class="px-4 py-2 rounded-3xl ">
-						<span>Nosotros</span>
-					</a>
-					<a href="#contacto" class="px-4 py-2 rounded-3xl ">
-						<span>Contacto</span>
-					</a>
-				</nav>
-			</div>
-		</header>
-		<main class="-mt-16">
-			<section id="inicio" class="w-full h-fit relative">
-				
-				<div class="w-full h-full">
-					<img src="/assets/img/banner.png" class="h-screen w-full" alt="smile">					
-				</div>
+<Layout title="Dentista Angel">
+	<div class="w-full mx-auto relative ">
 
-				<div class="w-full h-full bg-black absolute top-0 opacity-30">
-				</div>
+		<Header />
 
-				<div class="w-full h-full absolute z-10 top-0 pt-16">
-					<div class="flex gap-8 flex-col justify-center items-center w-full h-full max-w-screen-container mx-auto">
-						<h1 class="text-white font-extrabold text-6xl text-center">¡Más que una sonrisa, es tu bienestar!</h1>
-
-						<p class="text-green-light-2 w-2/3 text-center text-2xl">Cuidado dental profesional con un toque humano. Brackets, blanqueamientos, limpiezas y más, diseñados para que te sientas bien por dentro y por fuera.</p>
-						
-						<div class="flex gap-3 flex-col">
-							<span class="text-white text-2xl font-medium">Agendar tu cita</span>
-							<button class="text-blue-light text-2xl px-3 py-2 rounded-3xl bg-green-light hover:bg-green-light-dark">
-								Agendar
-							</button>
-						</div>
-					</div>
-					
-				</div>
-
-				<div class="absolute z-20 bottom-0 right-0 p-5">
-					<div class="w-full flex gap-3">
-						<a href="">
-							<img class="w-10 h-10" src="/assets/icons/instagram.svg" alt="instagram">
-						</a>
-						<a href="">
-							<img class="w-10 h-10" src="/assets/icons/facebook.svg" alt="facebook">
-						</a>
-						<a href="">
-							<img class="w-10 h-10" src="/assets/icons/x.svg" alt="x">
-						</a>
-						<a href="">
-							<img class="w-10 h-10" src="/assets/icons/tiktok.svg" alt="tiktok">
-						</a>
+		<main class="-mt-16 overflow-hidden">
 			
-					</div>
-					
-				</div>
-			</section>
+			<Banner />
 
-			<section id="servicios"  class="w-full max-w-screen-container min-h-screen mx-auto pt-16">
-				<div class="w-full h-full flex flex-col gap-[10px]">
-					<div class="flex gap-[10px] w-full h-full">
-						<div class="w-1/2 flex flex-col gap-[10px]">
-							<div class="px-5 py-11">
-								<h2 class="text-5xl font-bold text-dark-text w-7/12">NUESTROS SERVICIOS</h2>
-							</div>
-							<div class="p-5 bg-green-light rounded-2xl h-52">
-								<div class="w-full h-full flex flex-col justify-between">
-									<h3 class="text-dark-text text-4xl font-semibold w-1/2">Extracciones dentales</h3>
-									<p class="text-xl font-medium">Extracción de dientes dañados o muelas del juicio.</p>
-								</div>
-							</div>
-							<div class="p-5 bg-green-light rounded-2xl h-52">
-								<div class="w-full h-full flex flex-col justify-between">
-									<h3 class="text-dark-text text-4xl font-semibold">Tratamientos de conducto (endodoncia)</h3>
-									<p class="text-xl font-medium">Eliminación del tejido infectado dentro del diente para salvarlo.</p>
-								</div>
-							</div>
-						</div>
-						<div class="w-1/2 flex flex-col flex-grow gap-[10px]">
-							<div class="p-5 bg-green-light rounded-2xl h-1/2 relative">
-								<div class="w-full h-full p-5 flex flex-col justify-between absolute top-0 left-0 z-10">
-									<h3 class="text-dark-text text-4xl font-semibold w-8/12">Limpieza dental profesional</h3>
-									<ul class="flex flex-col gap-2">
-										<li class="px-3 py-1 rounded-2xl bg-white w-fit">Higiene dental</li>
-										<li class="px-3 py-1 rounded-2xl bg-white w-fit">Profilaxis</li>
-									</ul>
-								</div>
-								<img class="w-full h-full absolute top-0 left-0 opacity-30" src="/assets/img/cleanTeeth.png" alt="Limpieza dental profesional">
-							</div>
-							<div class="bg-green-light rounded-2xl h-1/2 relative">
-								<div class="w-full h-full p-5 flex flex-col justify-between absolute top-0 left-0 z-10">
-									<h3 class="text-dark-text text-4xl font-semibold w-8/12">Tratamiento de caries</h3>
-									<ul class="flex flex-col gap-2">
-										<li class="px-3 py-1 rounded-2xl bg-white w-fit">Obturaciones (empastes)</li>
-										<li class="px-3 py-1 rounded-2xl bg-white w-fit">Selladores dentales</li>
-									</ul>
-								</div>
-								<img class="w-full h-full absolute top-0 left-0 opacity-30" src="/assets/img/cleanCaries.png" alt="Tratamiento de caries">
-							</div>
-						</div>
-					</div>
-					<div class="w-full flex gap-[10px]">
-						<div class="w-1/2 flex flex-col gap-[10px]">
-							<div class="p-5 bg-green-light rounded-2xl relative h-60">
-								<div class="w-full h-full p-5 flex flex-col justify-between absolute top-0 left-0 z-10">
-									<h3 class="text-dark-text text-4xl font-semibold w-8/12">Ortodoncia</h3>
-									<p class="text-xl font-medium">Colocación de brackets o alineadores invisibles para corregir la posición de los dientes.</p>
-								</div>
-								<img class="w-full h-full absolute top-0 left-0 opacity-30" src="/assets/img/brackets.png" alt="Ortodoncia">
-							</div>
-							<div class="p-5 bg-green-light rounded-2xl relative h-60">
-								<div class="w-full h-full p-5 flex flex-col justify-between absolute top-0 left-0 z-10">
-									<h3 class="text-dark-text text-4xl font-semibold w-8/12">Tratamientos estéticos</h3>
-									<p class="text-xl font-medium">Rejuvenecimiento de encías, corrección de sonrisas gingivales.</p>
-								</div>
-								<img class="w-full h-full absolute top-0 left-0 opacity-30" src="/assets/img/staticTeeth.png" alt="Tratamientos estéticos">
-							</div>
-							<div class="p-5 bg-green-light rounded-2xl h-44">
-								<div class="w-full h-full flex flex-col justify-between">
-									<h3 class="text-dark-text text-4xl font-semibold">Carillas dentales (veneers)</h3>
-									<p class="text-xl font-medium">Colocación de láminas de porcelana o resina en la parte frontal de los dientes para mejorar su apariencia.</p>
-								</div>
-							</div>
-						</div>
-						<div class="w-1/2 flex flex-col gap-[10px] items-stretch">
-							<div class="px-5 py-11">
-								<h2 class="text-5xl font-bold text-dark-text w-7/12">Especializados</h2>
-							</div>
-							<div class="p-5 bg-green-light rounded-2xl min-h-56">
-								<div class="w-full h-full flex flex-col justify-between">
-									<h3 class="text-dark-text text-4xl font-semibold w-8/12">Blanqueamiento dental</h3>
-									<p class="text-xl font-medium">Tratamientos para mejorar la estética de los dientes con productos de blanqueamiento profesional.</p>
-								</div>
-							</div>
-							<div class="p-5 bg-green-light rounded-2xl h-full relative">
-								<div class="w-full h-full flex flex-col justify-between">
-									<h3 class="text-dark-text text-4xl font-semibold w-8/12">Otros servicios</h3>
-									<ul class="flex flex-col gap-2">
-										<li class="px-3 py-1 rounded-2xl bg-white w-fit">Implantes dentales</li>
-										<li class="px-3 py-1 rounded-2xl bg-white w-fit">Odontopediatría</li>
-										<li class="px-3 py-1 rounded-2xl bg-white w-fit">Cirugía bucal</li>
-										<li class="px-3 py-1 rounded-2xl bg-white w-fit">Prostodoncia</li>
-									</ul>
-								</div>
-								<img class="absolute bottom-3 right-4" src="/assets/icons/more.svg" alt="more services">
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
+			<Services />
 
-			<section id="nosotros"  class="w-full max-w-screen-container mx-auto pt-16">
-				<div class="w-full flex gap-[10px]">
-					<div class="w-1/2 h-full">
-						<div class="px-5 py-11">
-							<h2 class="text-5xl font-bold text-dark-text">SOBRE NOSOTROS</h2>
-						</div>
-						<div class="bg-dark-bold p-5 rounded-2xl">
-							<p class="text-green-light-2 font-medium text-base mb-3">En [Nombre de la Clínica], nos dedicamos a brindar atención dental de alta calidad, combinando experiencia y un enfoque humano para que cada paciente se sienta cómodo y bien atendido. Con un equipo de especialistas en diversas áreas de la odontología, estamos preparados para cubrir todas tus necesidades de salud bucal, desde cuidados preventivos hasta procedimientos avanzados.</p>
-							<p class="text-green-light-2 font-medium text-base mb-3">Nos caracterizamos por utilizar la tecnología más avanzada, lo que nos permite ofrecer diagnósticos precisos y tratamientos efectivos. Además, creemos firmemente en la educación de nuestros pacientes, asegurándonos de que comprendas cada paso del proceso para que tomes decisiones informadas sobre tu salud.</p>
-							<p class="text-green-light-2 font-medium text-base">Nuestra clínica está diseñada pensando en tu comodidad, con espacios modernos y acogedores. Creemos que una sonrisa saludable no solo refleja bienestar físico, sino también confianza y felicidad. Por eso, nos esforzamos en ofrecer una experiencia dental que supere tus expectativas.</p>
-						</div>
-					</div>
-					<div class="w-1/2 h-full">
-						<div class="w-full h-full flex gap-[10px]">
-							<div class="w-full h-full flex flex-col">
-								<div class="p-5 bg-black w-full h-[504px]">
-									
-								</div>
-								<div class="flex flex-col gap-1">
-									<span>Amonos</span>
-									<span>cepilla dientes</span>
-								</div>
-								
-							</div>
-							<div class="h-full flex flex-col gap-[10px]">
-								<div class="w-40 h-32 bg-slate-400">
+			<About />
 
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
+			<Contact />
 
-			<section id="contacto"  class="w-full max-w-screen-container h-screen mx-auto pt-16">
-				<h2>contacto</h2>
-			</section>
-			
-			<!-- <Card
-					href="https://astro.build/chat/"
-					title="Community"
-					body="Come say hi to our amazing Discord community. ❤️"
-				/> -->
-	
-			<!-- <span class="text-red-500 font-bold">HOLAAA</span> -->
+			<DoDate />
+
 		</main>
-		<footer class="px-4">
-			copy
-		</footer>
+		<Footer />
 	</div>
 	
 </Layout>
