@@ -1,0 +1,108 @@
+---
+import Item from './Item.astro';
+import ItemSmall from './ItemSmall.astro';
+
+const doctors = [
+    {
+        id: 'doctor-1',
+        name: 'Angel MR',
+        speciality: 'Dentista',
+        img: '/assets/img/dentist.png'
+    },
+    {
+        id: 'doctor-2',
+        name: 'Dr Roberto R.R.',
+        speciality: 'Dentista',
+        img: '/assets/img/doctor-1.jpg'
+    },
+    {
+        id: 'doctor-3',
+        name: 'Pedro J.J',
+        speciality: 'Dentista',
+        img: '/assets/img/doctor-2.jpg'
+    },
+    {
+        id: 'doctor-4',
+        name: 'Miguel OTZ',
+        speciality: 'Dentista',
+        img: '/assets/img/doctor-3.jpg'
+    }
+]
+
+---
+
+
+<div class="w-full h-full flex relative overflow-hidden">
+    <div class="carousel min-w-[362.5px] flex ">
+        {
+            doctors.map( (doctor) => (
+                <Item href={doctor.img} name={doctor.name} speciality={doctor.speciality} />
+            ))
+        }
+    </div>
+    <div class="h-full flex flex-col gap-[10px] relative z-10 bg-white flex-grow p-[10px] pb-5">
+        {
+            doctors.map( (doctor) => (
+                <ItemSmall id={doctor.id} href={doctor.img} name={doctor.name} />
+            ))
+        }
+       
+    </div>
+</div>
+
+
+<script>
+import gsap from "gsap";
+
+    let doctor1 = document.getElementById('doctor-1')
+    let doctor2 = document.getElementById('doctor-2')
+    let doctor3 = document.getElementById('doctor-3')
+    let doctor4 = document.getElementById('doctor-4')
+
+    const tl = gsap.timeline({ 
+        repeat: -1, 
+        defaults: { 
+            ease: "power1.inOut", 
+            duration: 1.5 
+        } });
+
+    tl.to(".carousel", 
+    { 
+        xPercent: -100, 
+        delay: 4, 
+        onStart: () => {
+            doctor2?.classList.add('item-focus')
+            doctor1?.classList.remove('item-focus')
+            doctor3?.classList.remove('item-focus')
+            doctor4?.classList.remove('item-focus')
+        }
+    }) // Mueve al segundo slide
+    .to(".carousel", { xPercent: -200, delay: 4, 
+        onStart: () => {
+            doctor1?.classList.remove('item-focus')
+            doctor2?.classList.remove('item-focus')
+            doctor3?.classList.add('item-focus')
+            doctor4?.classList.remove('item-focus')
+        } }) // Mueve al tercer slide
+    .to(".carousel", { xPercent: -300, delay: 4, 
+        onStart: () => {
+            doctor1?.classList.remove('item-focus')
+            doctor2?.classList.remove('item-focus')
+            doctor3?.classList.remove('item-focus')
+            doctor4?.classList.add('item-focus')
+        } }) // Mueve al cuarto slide
+    .to(".carousel", { xPercent: 0, delay: 4, 
+        onStart: () => {
+            doctor1?.classList.add('item-focus')
+            doctor2?.classList.remove('item-focus')
+            doctor3?.classList.remove('item-focus')
+            doctor4?.classList.remove('item-focus')
+        } }); // Vuelve al primer slide
+</script>
+
+<style>
+    .item-focus {
+        border: 4px;
+        border-color: #06b6d4;
+    }
+</style>

@@ -42,6 +42,84 @@
     </div>
     <div class="p-5 w-full flex justify-center gap-5">
         <span>© 2024. Todos los derechos reservados.</span>
-        <span>Creada por: GhostTech</span>
+        <!-- <span>Creada por: <a href="https://porfolio-angelmr.vercel.app/" target="_blank" class="split-text inline-block hover:underline"><span>G</span><span>h</span><span>o</span><span>s</span><span>t</span><span>T</span><span>e</span><span>c</span><span>h</span><span>{'</>'}</span></a></span> -->
+        <span class="flex">Creada por: <a id="split-text" href="https://porfolio-angelmr.vercel.app/" target="_blank" class="flex relative hover:underline">GhostTech</a></span>
     </div>
 </footer>
+
+
+<script>
+import gsap from "gsap";
+
+    // Simple 
+    // gsap.from(".split-text span", {
+    //     x: -100,
+    //     opacity: 0,
+    //     duration: 0.8,
+    //     stagger: 0.2,  // Retardo entre cada letra
+    //     ease: "power2.out",
+    //     repeat: -1,
+    // });
+
+  const title = document.getElementById('split-text');
+
+  const text = title!.textContent;
+  title!.innerHTML = '';
+
+  console.log(text, 'TEXT');
+
+  // Crear las letras en spans
+  text!.split('').forEach(char => {
+    const span = document.createElement('span');
+    span.textContent = char;
+    span.classList.add('char');
+    title!.appendChild(span);
+
+    console.log();
+    
+  });
+
+
+  // Seleccionar todas las letras
+  const chars = document.querySelectorAll('.char');
+
+  // Definir direcciones de animación (arriba, abajo, izquierda, derecha)
+  const directions = [
+    { x: 0, y: 10 },  // Abajo
+    { x: 0, y: -10 }, // Arriba
+    { x: 10, y: 0 },  // Derecha
+    { x: -10, y: 0 }  // Izquierda
+  ];
+
+  // Animar las letras con diferentes direcciones
+  chars.forEach((char, index) => {
+    const direction = directions[Math.floor(Math.random() * directions.length)]; // Seleccionar dirección aleatoria
+    gsap.fromTo(char, 
+      { 
+        opacity: 0, 
+        x: direction.x, 
+        y: direction.y,
+      }, // Posición inicial aleatoria
+      { 
+        opacity: 1, 
+        x: 0, 
+        y: 0, 
+        duration: 1, 
+        stagger: 0.25,
+        delay: index * 0.1, 
+        ease: "power2.out",
+        repeat: -1,
+        repeatDelay: 3
+        
+    } // Animación
+    );
+  });
+</script>
+
+<style>
+    .char {
+        /* display: inline-block; */
+        position: absolute;
+        opacity: 0;
+    }
+</style>

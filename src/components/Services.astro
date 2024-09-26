@@ -1,4 +1,6 @@
-
+---
+// FALTA OPTIMIZAR IMAGENES DE ESTA PARTE
+---
 <section id="nuestros-servicios"  data-index="2" class="w-full max-w-screen-container h-full mx-auto pt-16">
     <div class="w-full h-full flex flex-col gap-[10px]">
         <div class="flex gap-[10px] w-full h-full">
@@ -111,6 +113,7 @@
           trigger: ".card-left", // El elemento que activa el scroll
           start: "top 70%", // Comienza la animación cuando el top de la card está al 80% de la ventana
           toggleActions: "play none none reverse", // Qué hacer al entrar/salir de la vista
+          once: true
         }
       }
     );
@@ -129,6 +132,7 @@
           trigger: ".card-right", // El elemento que activa el scroll
           start: "top 70%", // Comienza la animación cuando el top de la card está al 80% de la ventana
           toggleActions: "play none none reverse", // Qué hacer al entrar/salir de la vista
+          once: true
         }
       }
     );

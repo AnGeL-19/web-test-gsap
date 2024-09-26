@@ -2,6 +2,7 @@
 
 /* Código del lado del servidor o estático va aquí, como datos, importaciones o lógica de Astro */
 
+
 ---
 
 <header class="h-16 w-full flex items-center sticky top-0 z-50 bg-white">
@@ -83,6 +84,7 @@ navItems.forEach(item => {
 
 
 
+
 const sections = document.querySelectorAll('section');
 
   const observerOptions = {
@@ -91,16 +93,18 @@ const sections = document.querySelectorAll('section');
     rootMargin: '0px'
   };
 
-  const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
+  const observer = new IntersectionObserver((entries ) => {
+    entries.forEach((entry)  => {
+
+      const targetElement = entry.target as HTMLElement;
 
       if (entry.isIntersecting) {
-        const index = entry.target.dataset['index']
+        const index = Number(targetElement.dataset['index'])
         if (index) {
             console.log(`Llegaste a la sección: ${entry.target.id}`);
             // Puedes realizar cualquier acción aquí, como cambiar estilos de la navbar
             // Mueve la lavalamp al primer ítem al cargar la página
-            moveLavalamp(navItems[Number(index-1)]);  // Opcional, para que empiece en el primer ítem
+            moveLavalamp(navItems[Number( index -  1 )]);  // Opcional, para que empiece en el primer ítem
         }
         
       }

@@ -1,5 +1,7 @@
 
 ---
+import MapGoogle from "./map/MapGoogle.astro";
+
 
 ---
 
@@ -26,30 +28,8 @@
             </div>
         </div>
 
-        <div class="w-full h-[480px] rounded-2xl overflow-hidden relative">
-            <img class="w-full h-full object-cover " src="/assets/img/map-fake.png" alt="map fake">
-
-            <div class="absolute top-0 left-0 p-5">
-                <div class="bg-white rounded-lg w-fit px-3 py-2 shadow">
-                    <span class="text-3xl text-dark-text font-bold">Direcciones</span>
-                </div>
-            </div>
-            <div class="absolute top-0 right-0 p-5">
-                <div class="flex flex-col bg-white rounded-lg max-w-56 px-3 py-2 shadow">
-                    <span class="text-3xl text-dark-text font-bold">Direccion 1</span>
-                    <span>
-                        Jesús Salido y Tamaulipas #2111
-                        Col. Juárez, 85870
-                        Navojoa, Son.
-                    </span>
-                    <span></span>
-                    <span>
-                        cel:
-                        441234123123
-                    </span>
-                </div>
-            </div>
-        </div>
+        <MapGoogle />
+        
     </div>
 
     
