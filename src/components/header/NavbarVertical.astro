@@ -1,0 +1,116 @@
+
+<div id="list-menu-vertical" class="invisible overflow-hidden absolute z-10 w-full bg-white">
+    <nav  class={`flex flex-col items-center gap-5 py-5 relative`}>
+        <ul class={`flex flex-col items-center list-none m-0 p-0 relative z-20`}>
+            <li class="py-2 hover:text-gray-500">
+                <a href="#inicio" class="nav-item-menu px-4 py-2">
+                    Inicio
+                </a>
+            </li>
+            <li class="py-2 hover:text-gray-500">
+                <a href="#nuestros-servicios" class="nav-item-menu px-4 py-2">
+                    Servicios
+                </a>
+            </li>
+            <li class="py-2 hover:text-gray-500">
+                <a href="#nosotros"  class="nav-item-menu px-4 py-2">
+                    Nosotros
+                </a>
+            </li>
+            <li class="py-2  hover:text-gray-500">
+                <a href="#contacto"  class="nav-item-menu px-4 py-2">
+                    Contacto
+                </a>
+            </li>             
+        </ul>
+        <div class={`lavalamp-vertical px-4 py-2 rounded-3xl bg-green-light absolute flex h-10 w-16 z-10`}></div>
+    </nav>
+</div>
+
+
+<!-- Código del lado del cliente -->
+<script>
+    import gsap from "gsap";
+    
+    
+    const navItemsV = document.querySelectorAll(".nav-item-menu");
+    const lavalampV = document.querySelector(".lavalamp-vertical");
+    
+
+
+    // Mueve la "lavalamp" hacia el ítem activo inicial (opcional)
+    const moveLavalamp = (element: any) => {
+      const bounds = element.getBoundingClientRect();
+
+      console.log(element);
+      
+        gsap.to(lavalampV, {
+            width: bounds.width, // Ajusta el ancho
+            y: bounds.top - (element.offsetParent.getBoundingClientRect().top), // Ajusta la posición horizontal
+            ease: "power2.out", // Suavidad en el movimiento
+            duration: 0.3
+        });
+     
+    
+      
+    };
+  
+
+
+    // Asigna el evento de hover a cada ítem
+    navItemsV.forEach(item => {
+      item.addEventListener("click", (e) => {
+        e.preventDefault()
+        // moveLavalamp(e.target);
+    
+          // Obtener el destino (el id de la sección a la que queremos desplazarnos)
+          const targetId = item.getAttribute("href");
+          const targetSection = document.querySelector(targetId || '') || '';
+    
+          // Animación suave al hacer scroll usando GSAP
+          gsap.to(window, 
+          
+            {
+                duration: 1,
+                scrollTo: targetSection,
+                ease: "power2",
+            }
+        );
+      });
+    });
+    
+    
+    
+    
+    const sections = document.querySelectorAll('section');
+    
+      const observerOptions = {
+        root: null, // Usa el viewport completo del navegador
+        threshold: 0.3, // El 30% de la sección debe estar visible para que sea detectada
+        rootMargin: '0px'
+      };
+    
+      const observer = new IntersectionObserver((entries ) => {
+        entries.forEach((entry)  => {
+    
+          const targetElement = entry.target as HTMLElement;
+    
+          if (entry.isIntersecting) {
+            const index = Number(targetElement.dataset['index'])
+            if (index) {
+                console.log(`Llegaste a la sección: ${entry.target.id}`);
+                // Puedes realizar cualquier acción aquí, como cambiar estilos de la navbar
+                // Mueve la lavalamp al primer ítem al cargar la página
+                moveLavalamp(navItemsV[Number( index -  1 )]);  // Opcional, para que empiece en el primer ítem
+            }
+            
+          }
+        });
+      }, observerOptions);
+    
+      sections.forEach(section => {
+        observer.observe(section); // Observa cada sección
+      });
+    
+    
+    </script>

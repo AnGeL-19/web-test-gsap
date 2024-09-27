@@ -32,7 +32,7 @@ const doctors = [
 ---
 
 
-<div class="w-full h-full flex relative overflow-hidden">
+<div class="max-w-[540px] w-full  h-full flex relative overflow-hidden">
     <div class="carousel min-w-[362.5px] flex ">
         {
             doctors.map( (doctor) => (
@@ -61,6 +61,11 @@ import gsap from "gsap";
 
     const tl = gsap.timeline({ 
         repeat: -1, 
+        scrollTrigger: {
+          trigger: ".carousel", // El elemento que activa el scroll
+          start: "top 50%", // Comienza la animación cuando el top de la card está al 50% de la ventana
+          toggleActions: "play none none reverse", // Qué hacer al entrar/salir de la vista
+        },
         defaults: { 
             ease: "power1.inOut", 
             duration: 1.5 

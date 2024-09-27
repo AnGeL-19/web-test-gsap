@@ -1,0 +1,79 @@
+---
+import NavbarVertical from "./NavbarVertical.astro";
+import NavPage from "./NavPage.astro";
+
+
+---
+
+<div class="h-full w-full">
+
+    <div class="absolute top-0 left-0 w-full h-fit z-50 bg-white">
+        <div id="menu" class="w-full h-12 flex justify-between items-center px-4 relative z-50">
+            <div class="w-10 h-10">
+                <img class="w-full h-full" src="/assets/icons/logo.png" alt="Dentist Example">
+            </div>
+    
+            <button id="menu-open" >
+                <img id="icon-menu" src="/assets/icons/menu.svg" alt="menu-burger">
+            </button>
+        </div>
+    
+        <div class="relative">
+            <NavbarVertical />
+        </div>
+        
+    </div>
+    
+</div>
+
+<script>
+    import gsap from "gsap";
+
+    const btnMenu = document.getElementById('menu-open')
+    const listMenu = document.getElementById('list-menu-vertical')
+    const iconMenu = document.getElementById('icon-menu')
+
+    let isOpen = false;
+
+    btnMenu?.addEventListener('click', () => {
+
+        if (!isOpen) {
+
+            // @ts-ignore
+            iconMenu!.src = '/assets/icons/close.svg'
+
+            gsap.to(listMenu, {
+            duration: 0.5,
+            height: "auto",     // Altura automática para que tome el tamaño del contenido
+            // opacity: 1,         // La opacidad va a 1
+            y: 0,               // Mueve el menú desde abajo hacia su posición original
+            onStart: () => {
+                
+                // listMenu!.style.display = "flex"
+                listMenu!.style.visibility = "visible"  
+            },
+           ease: "power2.out"
+            });
+        } else {
+            // @ts-ignore
+            iconMenu!.src = '/assets/icons/menu.svg'
+
+            gsap.to(listMenu, {
+            duration: 0.5,
+            height: 0,          // Se cierra con altura 0
+            // opacity: 0,         // La opacidad baja a 0
+            y: -20,             // Lo mueve un poco hacia arriba para un efecto de desplazamiento
+            onComplete: () => {
+                listMenu!.style.visibility = "hidden"
+                // listMenu!.style.display = "none"
+            },
+            ease: "power2.in"
+            });
+        }   
+
+        isOpen = !isOpen;
+       
+    })
+
+
+</script>

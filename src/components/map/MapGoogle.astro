@@ -13,39 +13,27 @@
 
     <div class="absolute top-12 left-0 p-2">
         <div class="bg-white rounded-lg w-fit px-3 py-2 shadow">
-            <span class="text-3xl text-dark-text font-bold">Direcciones</span>
+            <span class="text-3xl text-dark-text font-bold mb-3">Direcciones</span>
+
+
+            <div class="flex flex-col gap-2">
+                <span>Direccion 1</span>
+                <div class="flex justify-between items-center">
+                    <span class="font-medium">Como llegar</span>
+                    <button id="arrive-location" class="px-4 py-2 text-xl shadow rounded-2xl hover:bg-zinc-50" >
+                        <img class="h-5 w-5 text-white" src="/assets/icons/navigation.svg" alt="navigation">
+                   </button>
+                </div>
+               
+            </div>
         </div>
     </div>
-    <div class="absolute bottom-5 left-0 p-2">
-        <div class="flex gap-2">
-            <button id="my-location" class="px-4 py-2 text-xl bg-dark-bold text-white rounded-2xl" >Mi ubicacion</button>
-            <button id="arrive-location" class="hidden px-4 py-2 text-xl bg-gray-500 text-white rounded-2xl" >Llegar</button>
-        </div>
-    </div>
-    <!-- <div class="absolute top-0 right-0 p-5">
-        <div class="flex flex-col bg-white rounded-lg max-w-56 px-3 py-2 shadow">
-            <span class="text-3xl text-dark-text font-bold">Direccion 1</span>
-            <span>
-                Jesús Salido y Tamaulipas #2111
-                Col. Juárez, 85870
-                Navojoa, Son.
-            </span>
-            <span></span>
-            <span>
-                cel:
-                441234123123
-            </span>
-        </div>
-    </div> -->
 </div>
 
 <script>
 import { Loader } from "@googlemaps/js-api-loader"
 
-const locationButton = document.getElementById("my-location");
 const arriveButton = document.getElementById("arrive-location");
-
-
 
 const loader = new Loader({
   apiKey: import.meta.env.PUBLIC_API_KEY_GOOGLE_MAP,
@@ -65,7 +53,7 @@ const mapOptions = {
 };
 
 
-let pos;
+
 
 
 const initMap = async () => {
@@ -73,7 +61,7 @@ const initMap = async () => {
     try {
 
         const { Map } = await loader.importLibrary('maps')
-        const map = new Map(document.getElementById("map"), mapOptions);
+        const map = new Map(document.getElementById("map")!, mapOptions);
         
         //@ts-ignore    
         let infoWindow = new google.maps.InfoWindow();
@@ -89,27 +77,34 @@ const initMap = async () => {
         infoWindow.setContent('<h1><strong>Direccion</strong></h1><span>Jesús Salido y Tamaulipas #2111, Col. Juárez, 85870, Navojoa, Sonora.</span><h2><strong>Telefono</strong></h2><span>441234123123</span>');
         infoWindow.open(map, marker);
 
-        locationButton!.addEventListener("click", () => {
-            // Try HTML5 geolocation.
-            if (navigator.geolocation) {
 
-            arriveButton!.style.display = "flex"
+        arriveButton!.addEventListener("click", () => {
+
+            if (navigator.geolocation) {
 
             navigator.geolocation.getCurrentPosition(
                 (position: GeolocationPosition) => {
-                pos = {
-                    lat: position.coords.latitude,
-                    lng: position.coords.longitude,
-                };
+                    let pos = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude,
+                    };
 
-                const myLocationMarker = new AdvancedMarkerElement({
-                    map: map,
-                    position: pos,
-                    title: 'Mi ubicacion'
-                });
-                
-                infoWindow.setPosition(pos);
-                map.setCenter(pos);
+                    infoWindow.setPosition(pos);
+                    map.setCenter(pos);
+
+                    // Inicializa los servicios de direcciones
+                    //@ts-ignore 
+                    const directionsService = new google.maps.DirectionsService();
+                    //@ts-ignore 
+                    const directionsRenderer = new google.maps.DirectionsRenderer();
+                    directionsRenderer.setMap(map);
+
+                    // Establece una ubicación de origen y destino
+                    const start = positionMarker; // O puedes usar lat/lng { lat: 40.7128, lng: -74.0060 }
+                    const end = pos; // O puedes usar lat/lng { lat: 38.9072, lng: -77.0369 }
+
+                    // Llama a la función para calcular la ruta
+                    calculateAndDisplayRoute(directionsService, directionsRenderer, end, start );
                 },
                 showError
             );
@@ -117,22 +112,7 @@ const initMap = async () => {
             // Browser doesn't support Geolocation
             //   handleLocationError(false, infoWindow, map.getCenter()!);
             }
-        });
-
-        arriveButton!.addEventListener("click", () => {
-            // Inicializa los servicios de direcciones
-            //@ts-ignore 
-            const directionsService = new google.maps.DirectionsService();
-            //@ts-ignore 
-            const directionsRenderer = new google.maps.DirectionsRenderer();
-            directionsRenderer.setMap(map);
-
-            // Establece una ubicación de origen y destino
-            const start = positionMarker; // O puedes usar lat/lng { lat: 40.7128, lng: -74.0060 }
-            const end = pos!; // O puedes usar lat/lng { lat: 38.9072, lng: -77.0369 }
-
-            // Llama a la función para calcular la ruta
-            calculateAndDisplayRoute(directionsService, directionsRenderer, start, end);
+           
         })
         
         

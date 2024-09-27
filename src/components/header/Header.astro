@@ -1,0 +1,27 @@
+---
+import Menu from "./Menu.astro";
+import NavPage from "./NavPage.astro";
+
+
+/* Código del lado del servidor o estático va aquí, como datos, importaciones o lógica de Astro */
+
+
+---
+
+<header class="hidden md:flex h-16 w-full  items-center sticky top-0 z-50 bg-white">
+    <div class="w-full max-w-screen-container mx-auto flex justify-between relative">
+        <div class="w-10 h-10">
+            <img class="w-full h-full" src="/assets/icons/logo.png" alt="Dentist Example">
+        </div>
+        <NavPage />
+        <!-- <div class=""></div> -->
+        
+    </div>
+</header>
+
+<div class="sticky top-0 z-50 md:hidden">
+  <Menu  />
+</div>
+
+
+

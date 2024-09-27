@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+import ImageBanner from '../../public/assets/img/banner.png'; 
 
 // FALTA OPTIMIZAR LAS IMAGNES DE ESTA PARTE
 
@@ -6,8 +8,9 @@
 
 <section id="inicio" data-index="1" class="w-full h-full relative">
 				
-    <div class="w-full h-full">
-        <img src="/assets/img/banner.png" class="h-screen w-full" alt="smile">					
+    <div class="w-full h-screen">
+        <Image class="h-screen w-full" src={ImageBanner}  alt="smile" />
+        <!-- <img src="/assets/img/banner.png" class="h-screen w-full" alt="smile">					 -->
     </div>
 
     <div class="w-full h-full bg-black absolute top-0 opacity-30">
@@ -17,11 +20,11 @@
         <div class="flex gap-8 flex-col justify-center items-center w-full h-full max-w-screen-container mx-auto">
             <h1 class="zoom-in-text text-white font-extrabold text-6xl text-center">¡Más que una sonrisa, es tu bienestar!</h1>
 
-            <p class="fade-in-text text-green-light-2 w-2/3 text-center text-2xl">Cuidado dental profesional con un toque humano. Brackets, blanqueamientos, limpiezas y más, diseñados para que te sientas bien por dentro y por fuera.</p>
+            <p class="fade-in-text text-green-light-2 w-7/12 text-center text-2xl">Cuidado dental profesional con un toque humano. Brackets, blanqueamientos, limpiezas y más, diseñados para que te sientas bien por dentro y por fuera.</p>
             
             <div class="flex gap-3 flex-col">
-                <span class="text-white text-2xl font-medium">Agendar tu cita</span>
-                <button class="text-dark-text text-2xl font-medium px-3 py-2 rounded-3xl bg-green-light transition ease-in-out delay-200 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 hover:text-white duration-100">
+                <span class="text-white text-xl font-medium">Agendar tu cita</span>
+                <button class="text-dark-text text-lg font-medium px-3 py-2 rounded-3xl bg-green-light transition ease-in-out delay-200 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 hover:text-white duration-100">
                     Agendar
                 </button>
             </div>
@@ -32,16 +35,16 @@
     <div class="absolute z-20 bottom-0 right-0 p-5">
         <div class="w-full flex gap-3">
             <a href="">
-                <img class="w-10 h-10" src="/assets/icons/instagram.svg" alt="instagram">
+                <img class="w-8 h-8" src="/assets/icons/instagram.svg" alt="instagram">
             </a>
             <a href="">
-                <img class="w-10 h-10" src="/assets/icons/facebook.svg" alt="facebook">
+                <img class="w-8 h-8" src="/assets/icons/facebook.svg" alt="facebook">
             </a>
             <a href="">
-                <img class="w-10 h-10" src="/assets/icons/x.svg" alt="x">
+                <img class="w-8 h-8" src="/assets/icons/x.svg" alt="x">
             </a>
             <a href="">
-                <img class="w-10 h-10" src="/assets/icons/tiktok.svg" alt="tiktok">
+                <img class="w-8 h-8" src="/assets/icons/tiktok.svg" alt="tiktok">
             </a>
 
         </div>
