@@ -2,7 +2,13 @@
 export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
+    // screens: {
+    //   xs: '460px'
+    // },
     extend: {
+      fontFamily: {
+        'montserrat': ['Montserrat',"Open Sans"]
+      },
       maxWidth: {
         'screen-container': '1075px'
       },

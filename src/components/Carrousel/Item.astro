@@ -3,22 +3,23 @@ import { Image } from 'astro:assets';
 
 
 interface Props {
+    id: string;
 	name: string;
 	speciality: string;
 	href: string;
 }
 
-const { href, name, speciality } = Astro.props;
+const { id, href, name, speciality } = Astro.props;
 
 ---
 
-<div class="min-w-[362.5px] h-full flex flex-col">
+<div class="max-w-72 md:w-full max-h-80 md:max-w-full md:max-h-full md:h-full flex flex-col">
                     
-    <div class="w-full h-[504px] rounded-2xl overflow-hidden">
-        <Image loading="lazy" class='w-full h-full object-cover' src={href} alt={name} width="362.5" height="504" />
+    <div class="w-full h-[504px] md:h-[504px] rounded-2xl overflow-hidden">
+        <Image id={id}  loading="lazy" class='w-full h-full object-cover bg-center' src={href} alt={name} width="362.5" height="504" />
     </div>
     <div class="flex flex-col gap-1 mt-1">
-        <span class="text-2xl font-bold text-dark-text">{name}</span>
+        <span class="text-lg sm:text-2xl font-bold text-dark-text">{name}</span>
         <span class="text-base">{speciality}</span>
     </div>
 </div>
